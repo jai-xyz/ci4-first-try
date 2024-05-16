@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\BlogModel;
+use PDO;
+
 class Blog extends BaseController
 {
     public function index()
@@ -31,6 +34,33 @@ class Blog extends BaseController
         // echo view('partials/header',);
         return view('single_post', $data);
         // echo view('partials/footer');
+    }
+
+    public function new()
+    {
+        $data = [
+            'meta_title' => 'New Post',
+            'title' => 'Create new post',
+            'popup' => null,
+        ];
+
+        if($this->request->getMethod() == 'post'){
+            $model = new BlogModel();
+            $model->save($_POST);
+
+            if(!$model){
+                $data = [
+                    'popup' => 'insert failed',
+                ];
+            }else {
+                $data = [
+                    'popup' => 'insert success',
+                ];
+            }
+
+        }
+ 
+        return view('new_post', $data);
     }
 
 } 

@@ -6,6 +6,22 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+
+// students routes
+// /url,   controller::function
+$routes->get('/students', 'StudentsController::index');
+$routes->get('/students/create', 'StudentsController::createStudent');
+$routes->post('/students/store', 'StudentsController::storeStudent');
+$routes->get('/students/edit/(:num)', 'StudentsController::editStudent/$1');
+$routes->get('/students/update/(:num)', 'StudentsController::updateStudent/$1');
+$routes->get('/students/delete/(:num)', 'StudentsController::deleteStudent/$1');
+
+
+
+
+
+
+
 //  user homepage
 $routes->get('/', 'Home::index');
 $routes->get('/homepage', 'Home::homepage');
@@ -19,6 +35,8 @@ $routes->add('shop/product/(:any)/(:any)', 'Shop::product/$1/$2');
 // user blog
 $routes->get('/blog', 'Blog::index');
 $routes->get('/blog/post', 'Blog::post');
+$routes->get('/blog/new', 'Blog::new');
+$routes->post('/blog/new', 'Blog::new');
 
 // routes format 
 // '/url', 'folderlocation::function name'

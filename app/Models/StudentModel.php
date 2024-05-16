@@ -4,15 +4,23 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BlogModel extends Model
+class StudentModel extends Model
 {
-    protected $table            = 'post';
-    protected $primaryKey       = 'post_id';
+    protected $table            = 'tbl_students';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['post_title', 'post_content'];
+    protected $allowedFields    = [
+        'student_name',
+         'student_id', 
+         'student_section',
+          'student_course', 
+          'student_batch', 
+          'student_grade_level',
+           'student_profile'
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
